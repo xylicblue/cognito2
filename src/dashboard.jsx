@@ -10,8 +10,15 @@ const Dashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem("id_token");
     if (token) {
-      const decodedToken = jwtDecode(token);
-      setUser(decodedToken);
+      try {
+        const decodedToken = jwtDecode(token);
+        setUser(decodedToken);
+      } catch (error) {
+        console.error("Invalid token:", error);
+        localStorage.removeItem("id_token");
+        localStorage.removeItem("access_token");
+        navigate("/");
+      }
     } else {
       navigate("/");
     }
