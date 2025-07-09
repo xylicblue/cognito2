@@ -32,7 +32,7 @@ const RegisterPage = () => {
       const VITE_COGNITO_REDIRECT_URI = import.meta.env
         .VITE_COGNITO_REDIRECT_URI;
 
-      const loginUrl = `https://${VITE_COGNITO_DOMAIN}/oauth2/authorize?response_type=code&client_id=${VITE_COGNITO_CLIENT_ID}&redirect_uri=${VITE_COGNITO_REDIRECT_URI}&scope=email+openid+profile&state=${encodedState}`;
+      const loginUrl = `https://${VITE_COGNITO_DOMAIN}/authorize?response_type=code&client_id=${VITE_COGNITO_CLIENT_ID}&redirect_uri=${VITE_COGNITO_REDIRECT_URI}&scope=email+openid+profile&state=${encodedState}`;
 
       window.location.href = loginUrl;
     }

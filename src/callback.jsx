@@ -23,13 +23,15 @@ const Callback = () => {
           .VITE_COGNITO_REDIRECT_URI;
 
         const params = new URLSearchParams();
+        const client_secret = "rangeforce-secret";
         params.append("grant_type", "authorization_code");
         params.append("client_id", VITE_COGNITO_CLIENT_ID);
         params.append("code", authCode);
         params.append("redirect_uri", VITE_COGNITO_REDIRECT_URI);
+        params.append("client_secret", client_secret);
 
         const response = await axios.post(
-          `https://${VITE_COGNITO_DOMAIN}/oauth2/token`,
+          `https://${VITE_COGNITO_DOMAIN}/token`,
           params,
           { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
         );
